@@ -54,4 +54,13 @@ class KLDivergence(Scene):
             run_time=2
         )
 
+        # After shifting the graphs, show the new KL area with a different color
+        new_kl_area = axes.get_area(
+            p_graph, x_range=[-4, 4], bounded_graph=q_graph,
+            color=GREEN, opacity=0.4
+        )
+        # Replace the old highlighted area with the new one
+        self.play(ReplacementTransform(kl_area, new_kl_area))
+        kl_area = new_kl_area
+
         self.wait(2)
